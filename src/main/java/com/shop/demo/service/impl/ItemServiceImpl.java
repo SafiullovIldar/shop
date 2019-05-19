@@ -4,8 +4,7 @@ import com.shop.demo.dao.ItemDao;
 import com.shop.demo.dto.ItemDto;
 import com.shop.demo.entity.Item;
 import com.shop.demo.service.ItemService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class ItemServiceImpl implements ItemService {
 
-    private final ItemDao itemDao;
-    private final ConversionService conversion;
+    private ItemDao itemDao;
+    private ConversionService conversion;
 
     @Override
     public List<ItemDto> getItemsFromCatalog(String catalogId) {

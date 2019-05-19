@@ -4,10 +4,8 @@ import com.shop.demo.dao.CustomerDao;
 import com.shop.demo.entity.Customer;
 import com.shop.demo.transaction.TransactionalManager;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CustomerDaoImpl implements CustomerDao {
 
-    private final HikariDataSource dataSource;
-    private final TransactionalManager transactionalManager;
+    private HikariDataSource dataSource;
+    private TransactionalManager transactionalManager;
 
     @Override
     public void createCustomer(Customer customer) throws SQLException {

@@ -4,8 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shop.demo.dto.CatalogDto;
 import com.shop.demo.service.CatalogService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,10 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("catalog")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CatalogController {
 
-    private final CatalogService catalogService;
+    private CatalogService catalogService;
 
     @PostMapping
     public void createCatalog(@RequestBody CatalogDto dto) {

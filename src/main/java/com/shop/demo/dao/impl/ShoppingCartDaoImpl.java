@@ -4,10 +4,8 @@ import com.shop.demo.dao.ShoppingCartDao;
 import com.shop.demo.entity.ShoppingCart;
 import com.shop.demo.transaction.TransactionalManager;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,11 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
-    private final TransactionalManager transactionalManager;
-    private final HikariDataSource dataSource;
+    private TransactionalManager transactionalManager;
+    private HikariDataSource dataSource;
 
     @Override
     public ShoppingCart getShoppingCartById(String customerId) {

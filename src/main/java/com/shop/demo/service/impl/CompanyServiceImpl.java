@@ -1,20 +1,19 @@
 package com.shop.demo.service.impl;
 
+import com.shop.demo.service.CompanyService;
 import com.shop.demo.dao.CompanyDao;
 import com.shop.demo.dto.CompanyDto;
 import com.shop.demo.entity.Company;
-import com.shop.demo.service.CompanyService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CompanyServiceImpl implements CompanyService {
 
-    private final CompanyDao companyDao;
-    private final ConversionService conversion;
+    private CompanyDao companyDao;
+    private ConversionService conversion;
 
     @Override
     public void createCompany(CompanyDto companyDto) {

@@ -2,18 +2,17 @@ package com.shop.demo.controller;
 
 import com.shop.demo.dto.ItemDto;
 import com.shop.demo.service.ItemService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 @RequestMapping("/item")
 public class ItemController {
 
-    private final ItemService itemService;
+    private ItemService itemService;
 
     @PostMapping()
     public void createItem(@RequestParam("catalog_id") String catalogId, @RequestBody ItemDto itemDto) {

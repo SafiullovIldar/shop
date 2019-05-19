@@ -7,8 +7,7 @@ import com.shop.demo.entity.Catalog;
 import com.shop.demo.service.CatalogService;
 import com.shop.demo.service.ItemService;
 import com.shop.demo.transaction.TransactionalManager;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +17,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CatalogServiceImpl implements CatalogService {
 
-    private final CatalogDao catalogDao;
-    private final ItemService itemService;
-    private final ConversionService conversion;
-    private final TransactionalManager transactionalManager;
+    private CatalogDao catalogDao;
+    private ItemService itemService;
+    private ConversionService conversion;
+    private TransactionalManager transactionalManager;
 
     @Override
     public void createCatalog(CatalogDto dto) {

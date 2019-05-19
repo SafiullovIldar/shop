@@ -1,5 +1,6 @@
 package com.shop.demo.service.impl;
 
+import com.shop.demo.service.ShoppingCartService;
 import com.shop.demo.dao.PurchaseDao;
 import com.shop.demo.dao.ShoppingCartDao;
 import com.shop.demo.dto.ItemDto;
@@ -12,10 +13,8 @@ import com.shop.demo.payment.CreditCardStrategy;
 import com.shop.demo.payment.PayPalStrategy;
 import com.shop.demo.payment.PaymentStrategy;
 import com.shop.demo.service.ItemService;
-import com.shop.demo.service.ShoppingCartService;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -25,14 +24,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 @Slf4j
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
-    private final ShoppingCartDao shoppingCartDao;
-    private final ConversionService conversion;
-    private final PurchaseDao purchaseDao;
-    private final ItemService itemService;
+    private ShoppingCartDao shoppingCartDao;
+    private ConversionService conversion;
+    private PurchaseDao purchaseDao;
+    private ItemService itemService;
 
     @Override
     public ShoppingCartDto getShoppingCartDtoById(String customerId) {
@@ -93,7 +92,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             paymentStrategy = new PayPalStrategy();
             paymentStrategy.pay(amount);
         } else {
-            log.error("There is no payment information");
+            System.out.println("There is no payment information");
         }
     }
 }

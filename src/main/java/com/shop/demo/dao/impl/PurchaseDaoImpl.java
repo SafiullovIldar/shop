@@ -4,8 +4,7 @@ import com.shop.demo.dao.PurchaseDao;
 import com.shop.demo.entity.Purchase;
 import com.shop.demo.enums.PurchaseStatus;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -16,10 +15,10 @@ import static com.shop.demo.enums.PurchaseStatus.COMPLETED;
 import static com.shop.demo.enums.PurchaseStatus.INIT;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class PurchaseDaoImpl implements PurchaseDao {
 
-    private final HikariDataSource dataSource;
+    private HikariDataSource dataSource;
 
     public void createPurchase(Purchase purchase) {
         try (Connection connection = dataSource.getConnection()) {

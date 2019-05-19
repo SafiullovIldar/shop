@@ -4,10 +4,8 @@ import com.shop.demo.dao.ItemDao;
 import com.shop.demo.entity.Item;
 import com.shop.demo.transaction.TransactionalManager;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class ItemDaoImpl implements ItemDao {
 
-    private final HikariDataSource dataSource;
-    private final TransactionalManager transactionalManager;
+    private HikariDataSource dataSource;
+    private TransactionalManager transactionalManager;
 
     @Override
     public void deleteItem(String itemId) throws SQLException {
@@ -79,7 +77,7 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public List<Item> getItemsFromCatalog(String catalog_id) {
+    public List<Item> getItemsFromCatalog(String catalogId) {
 
         List<Item> items = new ArrayList<>();
 
@@ -87,7 +85,7 @@ public class ItemDaoImpl implements ItemDao {
 
             PreparedStatement preparedStatement = connection
                     .prepareStatement("SELECT * FROM item WHERE catalog_id = ?");
-            preparedStatement.setString(1, catalog_id);
+            preparedStatement.setString(1, catalogId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -108,7 +106,7 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public Item getItemById(String catalog_id, String item_id) {
+    public Item getItemById(String catalogId, String itemId) {
 
         Item item = null;
 
@@ -116,8 +114,8 @@ public class ItemDaoImpl implements ItemDao {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("SELECT * FROM item WHERE catalog_id = ? AND id = ? ");
 
-            preparedStatement.setString(1, catalog_id);
-            preparedStatement.setString(2, item_id);
+            preparedStatement.setString(1, catalogId);
+            preparedStatement.setString(2, itemId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -137,14 +135,14 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public Item getItemById(String item_id) {
+    public Item getItemById(String itemId) {
         Item item = null;
 
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("SELECT * FROM item WHERE id = ? ");
 
-            preparedStatement.setString(1, item_id);
+            preparedStatement.setString(1, itemId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

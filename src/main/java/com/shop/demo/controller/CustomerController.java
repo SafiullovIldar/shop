@@ -2,18 +2,17 @@ package com.shop.demo.controller;
 
 import com.shop.demo.dto.CustomerDto;
 import com.shop.demo.service.CustomerService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 @RequestMapping("customer")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    private CustomerService customerService;
 
     @PostMapping()
     public void createCustomer(@RequestBody CustomerDto dto) {

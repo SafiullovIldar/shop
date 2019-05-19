@@ -3,18 +3,16 @@ package com.shop.demo.dao.impl;
 import com.shop.demo.dao.CreditCardDao;
 import com.shop.demo.entity.CreditCard;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 
 import java.sql.*;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CreditCardDaoImpl implements CreditCardDao {
 
-    private final HikariDataSource dataSource;
+    private HikariDataSource dataSource;
 
     @Override
     public void createCreditCard(CreditCard creditCard) {

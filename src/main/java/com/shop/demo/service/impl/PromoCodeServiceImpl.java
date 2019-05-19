@@ -4,17 +4,16 @@ import com.shop.demo.dao.PromoCodeDao;
 import com.shop.demo.dto.PromoCodeDto;
 import com.shop.demo.entity.PromoCode;
 import com.shop.demo.service.PromoCodeService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class PromoCodeServiceImpl implements PromoCodeService {
 
-    private final PromoCodeDao promoCodeDao;
-    private final ConversionService conversion;
+    private PromoCodeDao promoCodeDao;
+    private ConversionService conversion;
 
     @Override
     public PromoCodeDto getPromoCode(String promoCodeId) {

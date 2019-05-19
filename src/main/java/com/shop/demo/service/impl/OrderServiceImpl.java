@@ -1,18 +1,17 @@
 package com.shop.demo.service.impl;
 
+import com.shop.demo.service.ItemService;
+import com.shop.demo.service.OrderService;
+import com.shop.demo.service.PromoCodeService;
+import com.shop.demo.service.ShoppingCartService;
 import com.shop.demo.dao.PurchaseDao;
 import com.shop.demo.dto.ItemDto;
 import com.shop.demo.dto.PromoCodeDto;
 import com.shop.demo.dto.PurchaseDto;
 import com.shop.demo.dto.ShoppingCartDto;
 import com.shop.demo.entity.Purchase;
-import com.shop.demo.service.ItemService;
-import com.shop.demo.service.OrderService;
-import com.shop.demo.service.PromoCodeService;
-import com.shop.demo.service.ShoppingCartService;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +22,14 @@ import java.util.UUID;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private final PurchaseDao purchaseDao;
-    private final ItemService itemService;
-    private final ConversionService conversion;
-    private final ShoppingCartService shoppingCartService;
-    private final PromoCodeService promoCodeService;
+    private PurchaseDao purchaseDao;
+    private ItemService itemService;
+    private ConversionService conversion;
+    private ShoppingCartService shoppingCartService;
+    private PromoCodeService promoCodeService;
 
     @Override
     public void createPurchase(String customerId,

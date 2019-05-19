@@ -3,17 +3,16 @@ package com.shop.demo.dao.impl;
 import com.shop.demo.dao.PromoCodeDao;
 import com.shop.demo.entity.PromoCode;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class PromoCodeDaoImpl implements PromoCodeDao {
 
-    private final HikariDataSource dataSource;
+    private HikariDataSource dataSource;
 
     @Override
     public PromoCode getPromoCode(String promoCodeId) {

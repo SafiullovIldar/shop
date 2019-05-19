@@ -3,16 +3,15 @@ package com.shop.demo.controller;
 
 import com.shop.demo.dto.PromoCodeDto;
 import com.shop.demo.service.PromoCodeService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 @RequestMapping("promocode")
 public class PromoCodeController {
 
-    private final PromoCodeService promoCodeService;
+    private PromoCodeService promoCodeService;
 
     @GetMapping("/{id}")
     public PromoCodeDto getPromoCode(@PathVariable("id") String promoCodeId) {

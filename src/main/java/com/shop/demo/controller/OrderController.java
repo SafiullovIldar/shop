@@ -2,18 +2,17 @@ package com.shop.demo.controller;
 
 import com.shop.demo.dto.PurchaseDto;
 import com.shop.demo.service.OrderService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 @RequestMapping("/purchase")
 public class OrderController {
 
-    private final OrderService orderService;
+    private OrderService orderService;
 
     @PostMapping
     public void createPurchase(@RequestParam("customer_id") String customerId,

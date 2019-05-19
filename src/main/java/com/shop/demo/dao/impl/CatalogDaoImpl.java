@@ -5,10 +5,8 @@ import com.shop.demo.dao.CatalogDao;
 import com.shop.demo.entity.Catalog;
 import com.shop.demo.transaction.TransactionalManager;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CatalogDaoImpl implements CatalogDao {
 
-    private final HikariDataSource dataSource;
-    private final TransactionalManager transactionalManager;
+    private HikariDataSource dataSource;
+    private TransactionalManager transactionalManager;
 
     @Override
     public void createCatalog(Catalog catalog) throws SQLException {

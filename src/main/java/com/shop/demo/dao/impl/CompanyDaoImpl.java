@@ -3,10 +3,8 @@ package com.shop.demo.dao.impl;
 import com.shop.demo.dao.CompanyDao;
 import com.shop.demo.entity.Company;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CompanyDaoImpl implements CompanyDao {
 
-    private final HikariDataSource dataSource;
+    private HikariDataSource dataSource;
 
     @Override
     public void createCompany(Company company) {
